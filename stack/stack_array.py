@@ -38,8 +38,7 @@ class StackArray:
 
     def push(self, obj):
         '''You can only push positive numbers. 
-        This function returns the status: OverflowError for failure (Overflow), 
-        1 for success, ValueError if pushed value <= 0, and TypeError for not a homogeneous element.'''
+        This function returns the status: OverflowError for failure (Overflow), 1 for success, and TypeError for not a homogeneous element.'''
         if self.size() == self.max_size:
             raise CustomOverflowError
         ## check if the object entered is homogeneous 
