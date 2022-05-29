@@ -1,3 +1,5 @@
+from numpy import array
+
 class Error(Exception):
     '''Base class for other exceptions'''
 
@@ -12,9 +14,12 @@ class CustomOverflowError(Error):
 class StackArray:
 
     def __init__(self, max_size, stack_type) -> None:
+        '''In: 
+            max_size: maximum size of the array
+            stack_type: Element data type of the stack. e.g. int for Integer, str for String.'''
         self.max_size = max_size
         self.stack_type = stack_type
-        self.stack = ["_" for _ in range(self.max_size)]
+        self.stack = array(["_" for _ in range(max_size)])
         self.top = -1
 
     def size(self) -> int:
@@ -32,7 +37,9 @@ class StackArray:
         return self.top
 
     def push(self, obj):
-        '''return the status: OverflowError for failure (Overflow), 1 for success, and TypeError for not a homogeneous element.'''
+        '''You can only push positive numbers. 
+        This function returns the status: OverflowError for failure (Overflow), 
+        1 for success, ValueError if pushed value <= 0, and TypeError for not a homogeneous element.'''
         if self.size() == self.max_size:
             raise CustomOverflowError
         ## check if the object entered is homogeneous 
@@ -51,38 +58,42 @@ class StackArray:
             return popped_element
         raise CustomUnderflowError
 
-stack1 = StackArray(max_size=2, stack_type=int)
+if __name__ == "__main__":
 
-# size before inserting
-print(f"isEmpty? {stack1.isEmpty()}")
-print(f"size? {stack1.size()}")
+    stack1 = StackArray(max_size=2, stack_type=int)
 
-# pop
-try:
-    print(f"popped element: {stack1.pop()}")
-except CustomUnderflowError as ue:
-    print(ue.message)
-finally:
-    print("Popping function failed.")
+    # size before inserting
+    print(f"isEmpty? {stack1.isEmpty()}")
+    print(f"size? {stack1.size()}")
 
-# push
-try:
-    stack1.push('a')
-except TypeError as te:
-    print(te.args[0])
-finally:
+    # pop
     try:
-        obj = 10
-        print(f"pushed status? {stack1.push(obj)}")
-        obj = 3
-        print(f"pushed status? {stack1.push(obj)}")
-        obj = 21
-        print(f"pushed status? {stack1.push(obj)}")
-    except CustomOverflowError as oe:
-        print(f"{oe.message}, Object: {obj}")
+        print(f"popped element: {stack1.pop()}")
+    except CustomUnderflowError as ue:
+        print(ue.message)
+    finally:
+        print("Popping function failed.")
 
-# pop
-try:
-    print(f"popped element: {stack1.pop()}")
-except CustomUnderflowError as ue:
-    print(ue.message)
+    # push
+    try:
+        stack1.push('a')
+    except TypeError as te:
+        print(te.args[0])
+    else:
+        try:
+            obj = 10
+            print(f"pushed status? {stack1.push(obj)}")
+            obj = 3
+            print(f"pushed status? {stack1.push(obj)}")
+            obj = 21
+            print(f"pushed status? {stack1.push(obj)}")
+        except CustomOverflowError as oe:
+            print(f"{oe.message}, Object: {obj}")
+        except ValueError as ve:
+            print(ve.args[0])
+
+    # pop
+    try:
+        print(f"popped element: {stack1.pop()}")
+    except CustomUnderflowError as ue:
+        print(ue.message)
