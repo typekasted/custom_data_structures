@@ -23,6 +23,7 @@ class SinglyLinkedList:
         new_node.next = self.head
         # change the head to point to new node
         self.head = new_node
+        # print(f"\n\n\n\n\nhead is at {self.head} \n\n\n\n\n")
 
     def is_node_present(self, unique_id):
         "linear search"
@@ -90,25 +91,24 @@ if __name__ == "__main__":
     print(f"Size: {obj1.size()}")
     obj1.print_elements()
 
-# OUTPUT:
-
-# anish@Anish ~ % /opt/homebrew/opt/python@3.10/bin/python3 /Users/anish/Desktop/data_science/data_struct/custom_data_structures/linked_list/singly_
-# linked_list.py
+# anish@Anish ~ % /opt/homebrew/opt/python@3.10/bin/python3 /Users/anish/Desktop/data_science/github_study/repo/custom_data_structures/linked_list/singly_link
+# ed_list.py
 # Initial size: 0
 # Head: None
 # -----------------------
 # Size after inserting: 1
-# Head: <__main__.Node object at 0x1031b7df0>
-# (node_count: 1, node_id: 0x1031b7df0, element: 10, next: None, unique_id: anish1@gmail.com)
+# Head: <__main__.Node object at 0x104fc3df0>
+# (node_count: 1, node_id: 0x104fc3df0, element: 10, next: None, unique_id: anish1@gmail.com)
 # -----------------------
 # Size: 2
-# Head: <__main__.Node object at 0x1031b7d90>
-# (node_count: 1, node_id: 0x1031b7d90, element: 20, next: <__main__.Node object at 0x1031b7df0>, unique_id: anish2@gmail.com)
-# (node_count: 2, node_id: 0x1031b7df0, element: 10, next: None, unique_id: anish1@gmail.com)
+# Head: <__main__.Node object at 0x104fc3d90>
+# (node_count: 1, node_id: 0x104fc3d90, element: 20, next: <__main__.Node object at 0x104fc3df0>, unique_id: anish2@gmail.com)
+# (node_count: 2, node_id: 0x104fc3df0, element: 10, next: None, unique_id: anish1@gmail.com)
 # -----------------------
 # Size: 3
-# Head: <__main__.Node object at 0x1031b7d90>
-# (node_count: 1, node_id: 0x1031b7d90, element: 20, next: <__main__.Node object at 0x1031b7d30>, unique_id: anish2@gmail.com)
-# (node_count: 2, node_id: 0x1031b7d30, element: 15, next: <__main__.Node object at 0x1031b7df0>, unique_id: anish3@gmail.com)
-# (node_count: 3, node_id: 0x1031b7df0, element: 10, next: None, unique_id: anish1@gmail.com)
+# Head: <__main__.Node object at 0x104fc3d90>
+# (node_count: 1, node_id: 0x104fc3d90, element: 20, next: <__main__.Node object at 0x104fc3d30>, unique_id: anish2@gmail.com)
+# (node_count: 2, node_id: 0x104fc3d30, element: 15, next: <__main__.Node object at 0x104fc3df0>, unique_id: anish3@gmail.com)
+# (node_count: 3, node_id: 0x104fc3df0, element: 10, next: None, unique_id: anish1@gmail.com)
 # -----------------------
+# anish@Anish ~ % 
