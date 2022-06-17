@@ -16,7 +16,7 @@ class CircularQueue():
     def __init__(self, MAX_SIZE, __TYPE_OBJ):
         self.__MAX_SIZE = MAX_SIZE
         self.__TYPE_OBJ = __TYPE_OBJ
-        self.__cqueue = array( [None] * MAX_SIZE )
+        self.__cqueue = array( [None] * MAX_SIZE ) # array([None for _ in range(MAX_SIZE)])
         self.__head, self.__size = 0, 0
 
     def size(self) -> int:
@@ -27,6 +27,9 @@ class CircularQueue():
     
     def peek(self) -> array:
         return self.__cqueue
+    
+    def top(self) -> any:
+        return (self.peek())[self.__head]
     
     def enqueue(self, obj):
         '''returns 1 for success.'''
@@ -42,7 +45,7 @@ class CircularQueue():
 
     def dequeue(self):
         if self.__size > 0:
-            dequeue_ele = self.__cqueue[self.__head]
+            dequeue_ele = self.top()
             self.__cqueue[self.__head] = None
             self.__head =  (self.__head + 1) % self.__MAX_SIZE
             self.__size -= 1
@@ -104,20 +107,13 @@ if __name__ == "__main__":
     finally:
         print(f"C-Queue post enqueue operation: {cqueue1.peek()}")
 
-# # OUTPUT:
+    print(f"Top: {cqueue1.top()}")
+    print(f"Dequeue object: {cqueue1.dequeue()}")
+    print(f"peek queue: {cqueue1.peek()}")
 
-# anish@Anish ~ % /opt/homebrew/opt/python@3.10/bin/python3 /Users/anish/Desktop/data_science/data_struct/custom_data_structures/queue/circular_queue.py
-# C-Queue is: [None None]
-# isEmpty? True
-# size? 0
-# Dequeue function failed.
-# UnderflowError while dequeue: C-Queue is empty.
-# TypeError: Object Enqueued is not homogeneous. Object type should be of <class 'int'>, was <class 'str'>
-# enqueue status of 10: 1
-# enqueue status of 3: 1
-# OverflowError while enqueuing: C-Queue is full. First Dequeue then Enqueue., Object: 21
-# C-Queue post enqueue operation: [10 3]
-# Dequeue Object: 10
-# C-Queue post dequeue: [None 3]
-# enqueue status of 32: 1
-# C-Queue post enqueue operation: [32 3]
+    print(f"Top: {cqueue1.top()}")
+    print(f"Enqueue object: {cqueue1.enqueue(13)}")
+    
+    print(f"Top: {cqueue1.top()}")
+    print(f"Dequeue object: {cqueue1.dequeue()}")
+
